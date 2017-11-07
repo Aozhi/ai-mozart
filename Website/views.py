@@ -1,4 +1,5 @@
 
+
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -26,5 +27,7 @@ def play_it(request):
 	os.system("ruby txt_to_midi.rb out.txt")
 	
 
-	return render(request, 'Website/play_it.html', {})
-    # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+	#return render(request, 'Website/play_it.html', {})
+	# return render(request, 'Website/play_it.html', {'urll': urll}
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
