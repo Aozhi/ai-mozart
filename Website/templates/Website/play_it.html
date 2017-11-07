@@ -10,6 +10,7 @@
 	<div class="row">
 		<h2>Play the thing</h2>
 		<button id='butt' class='btn btn-success' onClick="operate()">Play</button>
+		<h4<a href="{{MEDIA_URL}}/output.mid">{{MEDIA_URL}}/output.mid</a></h4>
 	</div>
 </div>
 
@@ -19,7 +20,7 @@
 	{
 		if($('#butt').text() == 'Play')
 		{
-			MIDIjs.play('{{ urll }}');
+			MIDIjs.play('{{MEDIA_URL}}/output.mid');
 			$('#butt').removeClass('btn-success');
 			$('#butt').addClass('btn-danger');
 			$('#butt').text('Stop');
