@@ -10,7 +10,7 @@
 <div class="ui center aligned container" align="center">
 	<div class="row">
 		<h3>1) Click to generate new music from Neural Network, wait few seconds after clicking for network to load</h3> <br>
-		<a href='#' class='btn btn-danger' onClick="generate()">Generate Music</a><br><br>
+		<div class='btn btn-danger' onClick="generate()">Generate Music</div><br><br>
 	</div>
 </div>
 <br>
@@ -64,6 +64,7 @@
 
 	function generate()
 	{
+		$('#play').hide();
 		$('#dummy').load('{% url 'play_it' %}', function(){
 			$('#play').show();
 		});
