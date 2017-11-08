@@ -26,11 +26,11 @@ def play_it(request):
 	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
 	os.chdir("/home/mozart/Website")
-	
-	command = "timidity /media/output.mid -Ow /media/outfile.mp3"
+
+	command = "timidity media/output.mid -Ow -o media/outfile.mp3"
 	os.system(command)
 	#return render(request, 'Website/play_it.html', {})
-	# return render(request, 'Website/play_it.html', {'urll': urll}
+	# return render(request, 'Website/play_it.html', {'urll': urll}	
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def about(request):
