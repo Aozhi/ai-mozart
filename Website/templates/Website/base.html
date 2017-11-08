@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}">
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
@@ -22,18 +21,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
 </head>
-<body style="background-color: #ffffff;">
+<body style="background-color: white;">
 
 	<div class='container' style="display: inline; text-align: right; margin-top: ">
 		<ul>
 			<a href="{% url 'index' %}" style="color:black; font-family:'Open Sans'; font-size: 16px; margin-right:20px; display: inline;"><span class="glyphicon glyphicon-home"></span></a>
 			<a href="{% url 'about' %}" style="font-family:'Open Sans'; color:black; font-size: 16px; margin-right:20px; display: inline;">About</a>
-			<a href="{% url 'vf' %}" style="font-family:'Open Sans'; color:black; margin-right:20px; font-size: 16px;  display: inline;">Vision & Future Development</a>
+			<a href="{% url 'vf' %}" style="font-family:'Open Sans'; color:black; margin-right:20px; font-size: 16px;  display: inline;">Vision & Further Development</a>
 		</ul>
 	</div>
 
 	<div class='container-fluid' style="margin-top: -63px; margin-left: -12px">
-		<img class='img-responsive' style='display:inline;' src="{% static 'shit.jpeg' %}"/>
+		<img class='img-responsive' style='display:inline;' src="{% static '/images/shit.jpeg' %}"/>
 	</div>
 
 {% block content %}
