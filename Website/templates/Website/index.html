@@ -1,4 +1,5 @@
 {% extends 'Website/base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 	<title>Music</title>
@@ -6,22 +7,23 @@
 
 {% block content %}
 
-<div class="ui center aligned container">
+<div class="ui center aligned container" align="center">
 	<div class="row">
-		<a href='{% url 'play_it' %}' class='btn btn-danger'>Generate Music</a>
+		<h3>1) Click to generate new music from Neural Network, wait few seconds after clicking for network to load</h3> <br>
+		<a href='{% url 'play_it' %}' class='btn btn-danger'>Generate Music</a><br><br>
 	</div>
 </div>
 <br>
 
-<div class="ui center aligned container">
+<div class="ui center aligned container" align="center">
 	<div class="row">
-		<h2>Play the thing</h2>
-		<button id='butt' class='btn btn-success' onClick="operate()">Play</button>
+		<h3>2) Play the music generated above</h3><br>
+		<button id='butt' class='btn btn-success' onClick="operate()">Play</button><br><br>
 	</div>
 </div>
 <br>
 
-<div id="status" class="ui center aligned container">
+<div id="status" class="ui center aligned container" align="center">
 	<div class="row">
 		<h3><span id="MIDIjs.message" style="color: green">Initializing ...</span></h3>
 	</div>
@@ -29,10 +31,12 @@
 
 <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
 <script type="text/javascript">
+	$('#status').hide();
 	function operate()
 	{
 		if($('#butt').text() == 'Play')
 		{
+			$('#status').show();
 			MIDIjs.play('/media/output.mid');
 			$('#butt').removeClass('btn-success');
 			$('#butt').addClass('btn-danger');
@@ -40,11 +44,21 @@
 		}
 		else
 		{
+			$('#status').hide();
 			MIDIjs.stop();
 			$('#butt').removeClass('btn-danger');
 			$('#butt').addClass('btn-success');
 			$('#butt').text('Play');	
 		}
+		
+		//Music Status
+ 		var message_span = document.getElementById('MIDIjs.message');
+  		message_span.innerHTML = MIDIjs.get_audio_status();
+
+  		MIDIjs.message_callback = display_status;
+  		function display_status(message) {
+     	message_span.innerHTML = message;
+		};
 	}
 </script>
 
