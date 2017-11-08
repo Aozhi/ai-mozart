@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from random import randint
 from django.shortcuts import render
 from .forms import MusicForm
 from .models import Music
@@ -22,10 +22,11 @@ def play_it(request):
 	print("i am here")
 	os.system("ls")
 	#os.system("cd 'char-rnn'")
+	num = randint(0, 5000)
 	os.system("cp output.mid /home/mozart/Website/media/output.mid")
-	os.system("th shiz.lua cv/lm_lstm_epoch33.77_0.7266.t7")
+	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
-	
+	os.chdir("/home/mozart/Website")	
 
 	#return render(request, 'Website/play_it.html', {})
 	# return render(request, 'Website/play_it.html', {'urll': urll}
