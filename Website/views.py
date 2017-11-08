@@ -13,8 +13,6 @@ import os
 # Create your views here.
 
 def index(request):
-			# command = "timidity " + song.audio.url + " -Ow out.mp3"
-
 	return render(request, 'Website/index.html', {})
 
 def play_it(request):
@@ -27,10 +25,9 @@ def play_it(request):
 	os.system("ruby txt_to_midi.rb out.txt")
 	os.chdir("/home/mozart/Website")
 
-	command = "timidity media/output.mid -Ow -o media/outfile.mp3"
+	command = "timidity media/output.mid -Ow -o outfile.mp3"
 	os.system(command)
-	#return render(request, 'Website/play_it.html', {})
-	# return render(request, 'Website/play_it.html', {'urll': urll}	
+
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def about(request):
