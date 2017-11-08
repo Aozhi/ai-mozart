@@ -22,17 +22,20 @@
 	</div>
 </div>
 <br>
-<div id="dummy"></div>
+
 <div id="status" class="ui center aligned container" align="center">
 	<div class="row">
 		<h3><span id="MIDIjs.message" style="color: green">Initializing ...</span></h3>
 	</div>
 </div>
 
+<div id="dummy">Example text</div>
+
 <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
 <script type="text/javascript">
 	$('#status').hide();
 	$('#play').hide();
+	$('#dummy').hide();
 	function operate()
 	{
 		if($('#butt').text() == 'Play')
