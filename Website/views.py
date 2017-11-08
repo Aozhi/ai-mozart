@@ -23,6 +23,7 @@ def play_it(request):
 	os.system("ls")
 	#os.system("cd 'char-rnn'")
 	num = randint(0, 5000)
+	print ("Random generator: " + str(num))
 	os.system("cp output.mid /home/mozart/Website/media/output.mid")
 	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
