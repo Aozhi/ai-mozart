@@ -15,6 +15,12 @@
 </div>
 <br>
 
+<div id="loader" class="ui center aligned container" align="center">
+	<div class="row">
+		<img src="http://www.voki.com/images/ajax-loader.gif" height="100" width="100"></img>
+	</div>
+</div>
+
 <div id="play" class="ui center aligned container" align="center">
 	<div class="row">
 		<h3>2) Play the music generated above</h3><br>
@@ -42,6 +48,7 @@
 	$('#status').hide();
 	$('#play').hide();
 	$('#dummy').hide();
+	$('#loader').hide();
 	function operate()
 	{
 		if($('#butt').text() == 'Play')
@@ -74,7 +81,9 @@
 	function generate()
 	{
 		$('#play').hide();
+		$('#loader').show();
 		$('#dummy').load('{% url 'play_it' %}', function(){
+			$('#loader').hide();
 			$('#play').show();
 		});
 	}
