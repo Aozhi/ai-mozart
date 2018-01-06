@@ -33,12 +33,12 @@
 <div id="play" class="ui center aligned container" align="center">
 	<div class="row">
 		<h3> Play The Generated Composition</h3><br>
-			<!--<button id='butt' class='btn btn-success' onClick="operate()">Play</button>
-			<a href='/media/outfile.mp3' id='butt' onClick="download()" class='btn btn-info'><span class="glyphicon glyphicon-download-alt"></span></a><br><br>-->
-			<audio controls>
+			<button id='butt' class='btn btn-success' onClick="operate()">Play</button>
+			<a href='/media/outfile.mp3' id='butt' onClick="download()" class='btn btn-info'><span class="glyphicon glyphicon-download-alt"></span></a><br><br>
+			<!--<audio controls>
 			  <source src="/media/outfile.mp3" type="audio/mpeg">
 			Your browser does not support the audio element.
-			</audio>
+			</audio>-->
 	</div>
 </div>
 <br>
@@ -72,7 +72,12 @@
 		if($('#butt').text() == 'Play')
 		{
 			$('#status').show();
-			MIDIjs.play('/media/output.mid');
+			//MIDIjs.play('/media/output.mid');
+			var sound = new Howl({
+  				src: ['sound.mp3']
+			});
+
+			sound.play();
 			$('#butt').removeClass('btn-success');
 			$('#butt').addClass('btn-danger');
 			$('#butt').text('Stop');	
@@ -80,7 +85,7 @@
 		else
 		{
 			$('#status').hide();
-			MIDIjs.stop();
+			sound.stop();
 			$('#butt').removeClass('btn-danger');
 			$('#butt').addClass('btn-success');
 			$('#butt').text('Play');	
@@ -101,7 +106,7 @@
 		$('#play').hide();
 		$('#loader').show();
 			$('#status').hide();
-			MIDIjs.stop();
+			sound.stop();
 			$('#butt').removeClass('btn-danger');
 			$('#butt').addClass('btn-success');
 			$('#butt').text('Play');
