@@ -22,7 +22,7 @@ def play_it_happy(request):
 	print ("Random generator: " + str(num))
 	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch50.00_0.9914.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
-	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
+	os.system("cp output.mid /home/saurabhbodhe/ai-mozart/media/output.mid")
 	os.chdir("/home/saurabhbodhe/ai-mozart")
 
 	command = "timidity -T 70 media/output.mid -Ow -o outfile.mp3"
@@ -37,8 +37,8 @@ def play_it_sad(request):
 	print ("Random generator: " + str(num))
 	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch20.07_0.6988.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
-	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
-	os.chdir("/home/saurabhbodhe/Website")
+	os.system("cp output.mid /home/saurabhbodhe/ai-mozart/media/output.mid")
+	os.chdir("/home/saurabhbodhe/ai-mozart")
 
 	command = "timidity -T 30 media/output.mid -Ow -o outfile.mp3"
 	os.system(command)
