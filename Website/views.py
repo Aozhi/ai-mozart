@@ -20,12 +20,12 @@ def play_it_happy(request):
 	os.system("ls")
 	num = randint(0, 5000)
 	print ("Random generator: " + str(num))
-	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
+	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch50.00_0.9914.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
 	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
-	os.chdir("/home/saurabhbodhe/Website")
+	os.chdir("/home/saurabhbodhe/ai-mozart")
 
-	command = "timidity media/output.mid -Ow -o outfile.mp3"
+	command = "timidity -T 70 media/output.mid -Ow -o outfile.mp3"
 	os.system(command)
 
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -35,12 +35,12 @@ def play_it_sad(request):
 	os.system("ls")
 	num = randint(0, 5000)
 	print ("Random generator: " + str(num))
-	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
+	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch20.07_0.6988.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
 	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
 	os.chdir("/home/saurabhbodhe/Website")
 
-	command = "timidity media/output.mid -Ow -o outfile.mp3"
+	command = "timidity -T 30 media/output.mid -Ow -o outfile.mp3"
 	os.system(command)
 
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
