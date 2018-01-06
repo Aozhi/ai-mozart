@@ -15,7 +15,9 @@
 				<h2 style="font-family:'Chivo'">Generate New Musical Composition</h2>
 	</div>
 		<div class='panel-body'>
-		<div class='btn btn-primary' onClick="generate()">Generate</div><br><br>
+		<div class='btn btn-primary' onClick="generate(1)">Happy</div><br><br>
+		<div class='btn btn-primary' onClick="generate(2)">Sad</div>
+		<br><br>
 	</div>
 	</div>
 	</div>
@@ -94,7 +96,7 @@
 		};
 	}
 
-	function generate()
+	function generate(val)
 	{
 		$('#play').hide();
 		$('#loader').show();
@@ -102,8 +104,14 @@
 			MIDIjs.stop();
 			$('#butt').removeClass('btn-danger');
 			$('#butt').addClass('btn-success');
-			$('#butt').text('Play');	
-		$('#dummy').load('{% url 'play_it' %}', function(){
+			$('#butt').text('Play');
+		if(val==1)
+		$('#dummy').load('{% url 'play_it_happy' %}', function(){
+			$('#loader').hide();
+			$('#play').show();
+		});
+		else
+		$('#dummy').load('{% url 'play_it_sad' %}', function(){
 			$('#loader').hide();
 			$('#play').show();
 		});

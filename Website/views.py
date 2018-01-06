@@ -15,15 +15,30 @@ import os
 def index(request):
 	return render(request, 'Website/index.html', {})
 
-def play_it(request):
-	os.chdir("/home/bsaurabh1/char-rnn")
+def play_it_happy(request):
+	os.chdir("/home/saurabhbodhe/char-rnn")
 	os.system("ls")
 	num = randint(0, 5000)
 	print ("Random generator: " + str(num))
-	os.system("cp output.mid /home/bsaurabh1/Website/media/output.mid")
 	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
 	os.system("ruby txt_to_midi.rb out.txt")
-	os.chdir("/home/bsaurabh1/Website")
+	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
+	os.chdir("/home/saurabhbodhe/Website")
+
+	command = "timidity media/output.mid -Ow -o outfile.mp3"
+	os.system(command)
+
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def play_it_sad(request):
+	os.chdir("/home/saurabhbodhe/char-rnn2")
+	os.system("ls")
+	num = randint(0, 5000)
+	print ("Random generator: " + str(num))
+	os.system("th shiz.lua -seed " + str(num) + " cv/lm_lstm_epoch33.77_0.7266.t7")
+	os.system("ruby txt_to_midi.rb out.txt")
+	os.system("cp output.mid /home/saurabhbodhe/Website/media/output.mid")
+	os.chdir("/home/saurabhbodhe/Website")
 
 	command = "timidity media/output.mid -Ow -o outfile.mp3"
 	os.system(command)

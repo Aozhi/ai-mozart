@@ -19,7 +19,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^play_it/$', views.play_it, name='play_it'),
+    url(r'^play_it_happy/$', views.play_it_happy, name='play_it_happy'),
+    url(r'^play_it_sad/$', views.play_it_sad, name='play_it_sad'),
     url(r'^about/$', views.about, name='about'),
     url(r'^vf/$', views.vf, name='vf'),
 ]
