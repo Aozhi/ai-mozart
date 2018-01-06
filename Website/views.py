@@ -25,7 +25,7 @@ def play_it_happy(request):
 	os.system("cp output.mid /home/saurabhbodhe/ai-mozart/media/output.mid")
 	os.chdir("/home/saurabhbodhe/ai-mozart")
 
-	command = "timidity -T 70 media/output.mid -Ow -o outfile.mp3"
+	command = "timidity -T 70 media/output.mid -Ow -o media/outfile.mp3"
 	os.system(command)
 
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -40,7 +40,7 @@ def play_it_sad(request):
 	os.system("cp output.mid /home/saurabhbodhe/ai-mozart/media/output.mid")
 	os.chdir("/home/saurabhbodhe/ai-mozart")
 
-	command = "timidity -T 30 media/output.mid -Ow -o outfile.mp3"
+	command = "timidity -T 30 media/output.mid -Ow -o media/outfile.mp3"
 	os.system(command)
 
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
