@@ -72,12 +72,8 @@
 		if($('#butt').text() == 'Play')
 		{
 			$('#status').show();
-			//MIDIjs.play('/media/output.mid');
-			var sound = new Howl({
-  				src: ['sound.mp3']
-			});
-
-			sound.play();
+			MIDIjs.play('/media/output.mid');
+			
 			$('#butt').removeClass('btn-success');
 			$('#butt').addClass('btn-danger');
 			$('#butt').text('Stop');	
